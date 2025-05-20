@@ -8,20 +8,20 @@ a%*%b
 # if a%*%b == 0, a and b will be orthogonal
 
 # Problem 4b
-
-x = matrix(rnorm(10*3,mean=0,sd=1),nrow = 10, ncol = 3)
-#x is [10,3]
-dim(x)
+set.seed(42)
+x = matrix(rnorm(10*3,mean=0,sd=1),nrow = 10, ncol = 3) #x is [10,3]
 b = c(1,1,2)
 mu = x %*% b
 mu
 
 # Problem 4c
+set.seed(24)
 epsilon = matrix(rnorm(10*1,mean=0,sd=0.1),nrow = 10,ncol = 1)
 
 y = mu+epsilon
 
 b_hat = solve(t(x)%*%x)%*%t(x)%*%y
+b_hat
 
 # Problem 4d
 # 这里使用的是ytrue-yhat
@@ -37,3 +37,4 @@ temp = solve(t(x)%*%x)
 cov_b_hat = s_sq_eps*temp
 
 s_sq_b_hat = sqrt(diag(cov_b_hat))
+s_sq_b_hat
